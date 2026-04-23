@@ -1,23 +1,19 @@
 const express = require('express')
 const path = require('path')
 const multer = require('multer')
-const fs = require('fs')
 
 const app = express()
 
-// يخلي index.html يشتغل
 app.use(express.static(__dirname))
-app.use(express.json())
 
-// رفع ملفات
+// رفع ملفات (بدون مكتبات ثقيلة)
 const upload = multer({ dest: 'uploads/' })
 
-// الصفحة الرئيسية
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'))
 })
 
-// 🔥 هذا المهم — حتى يختفي خطأ 404
+// هذا يحل مشكلة 404 بدون ما يطيح السيرفر
 app.post('/process', upload.single('pdf'), (req, res) => {
 
   if (!req.file) {
@@ -26,17 +22,11 @@ app.post('/process', upload.single('pdf'), (req, res) => {
 
   console.log('File received:', req.file.originalname)
 
-  // حالياً فقط تجربة (بدون معالجة حقيقية)
+  // حالياً فقط تأكيد نجاح
   res.json({
-    status: 'success',
-    message: 'File uploaded successfully (processing not implemented yet)'
+    success: true,
+    message: 'File uploaded successfully'
   })
-
-})
-
-// fallback
-app.use((req, res) => {
-  res.status(404).json({ error: 'Route not found' })
 })
 
 app.listen(process.env.PORT || 8080, '0.0.0.0', () => {
