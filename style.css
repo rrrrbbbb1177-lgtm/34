@@ -1,0 +1,370 @@
+/* ============================================================
+   Delivery Organizer — Style
+   Dark industrial theme, Arabic RTL
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg           : #0d0f1a;
+  --bg-card      : #131726;
+  --bg-card-b    : #1a1e30;
+  --accent       : #e94560;
+  --accent-dim   : rgba(233,69,96,.15);
+  --accent2      : #0f3460;
+  --success      : #2ecc71;
+  --success-dim  : rgba(46,204,113,.15);
+  --text         : #eaeaf0;
+  --text-dim     : #7a7a9a;
+  --border       : rgba(255,255,255,.07);
+  --border-hover : rgba(233,69,96,.4);
+  --radius       : 14px;
+  --radius-sm    : 8px;
+  --shadow       : 0 24px 60px rgba(0,0,0,.5);
+  --font         : 'Tajawal', sans-serif;
+}
+
+html { font-size: 16px; }
+
+body {
+  font-family  : var(--font);
+  background   : var(--bg);
+  color        : var(--text);
+  min-height   : 100vh;
+  display      : flex;
+  align-items  : flex-start;
+  justify-content: center;
+  padding      : 48px 16px 80px;
+  position     : relative;
+  overflow-x   : hidden;
+}
+
+/* ── Background grid ──────────────────────────────────────── */
+.bg-grid {
+  position : fixed;
+  inset     : 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Wrapper ──────────────────────────────────────────────── */
+.wrapper {
+  position : relative;
+  z-index  : 1;
+  width    : 100%;
+  max-width: 680px;
+  display  : flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ── Header ───────────────────────────────────────────────── */
+.header {
+  display    : flex;
+  align-items: center;
+  gap        : 16px;
+  padding    : 0 4px;
+}
+
+.header-icon {
+  font-size  : 2.6rem;
+  filter     : drop-shadow(0 0 12px rgba(233,69,96,.6));
+  flex-shrink: 0;
+}
+
+.header-text h1 {
+  font-size  : 1.7rem;
+  font-weight: 800;
+  letter-spacing: -.5px;
+  line-height: 1.2;
+}
+
+.header-text p {
+  font-size : .85rem;
+  color     : var(--text-dim);
+  margin-top: 2px;
+}
+
+/* ── Card ─────────────────────────────────────────────────── */
+.card {
+  background   : var(--bg-card);
+  border       : 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow   : var(--shadow);
+  overflow     : hidden;
+}
+
+/* ── Divider ──────────────────────────────────────────────── */
+.divider {
+  height    : 1px;
+  background: var(--border);
+  margin    : 0;
+}
+
+/* ── Step ─────────────────────────────────────────────────── */
+.step {
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.step-label {
+  display    : flex;
+  align-items: center;
+  gap        : 10px;
+  font-size  : .9rem;
+  font-weight: 600;
+  color      : var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.step-num {
+  width       : 26px;
+  height      : 26px;
+  border-radius: 50%;
+  background  : var(--accent-dim);
+  border      : 1px solid var(--accent);
+  color       : var(--accent);
+  font-size   : .8rem;
+  font-weight : 700;
+  display     : flex;
+  align-items : center;
+  justify-content: center;
+  flex-shrink : 0;
+}
+
+/* ── Drop zone ────────────────────────────────────────────── */
+.drop-zone {
+  border       : 2px dashed var(--border-hover);
+  border-radius: var(--radius-sm);
+  padding      : 36px 24px;
+  text-align   : center;
+  display      : flex;
+  flex-direction: column;
+  align-items  : center;
+  gap          : 8px;
+  cursor       : default;
+  transition   : background .2s, border-color .2s;
+}
+
+.drop-zone.drag-over {
+  background   : var(--accent-dim);
+  border-color : var(--accent);
+}
+
+.drop-icon { font-size: 2.2rem; }
+
+.drop-title {
+  font-size  : 1rem;
+  font-weight: 600;
+  color      : var(--text);
+}
+
+.drop-sub {
+  font-size: .8rem;
+  color    : var(--text-dim);
+}
+
+/* ── File preview ─────────────────────────────────────────── */
+.file-preview {
+  display    : flex;
+  align-items: center;
+  gap        : 10px;
+  background : var(--accent-dim);
+  border     : 1px solid var(--border-hover);
+  border-radius: var(--radius-sm);
+  padding    : 12px 16px;
+}
+
+.file-icon { font-size: 1.4rem; flex-shrink: 0; }
+
+.file-name {
+  flex      : 1;
+  font-size : .9rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow  : hidden;
+  text-overflow: ellipsis;
+}
+
+.file-size {
+  font-size: .78rem;
+  color    : var(--text-dim);
+  flex-shrink: 0;
+}
+
+.btn-remove {
+  background: none;
+  border    : none;
+  color     : var(--text-dim);
+  cursor    : pointer;
+  font-size : .9rem;
+  padding   : 2px 6px;
+  border-radius: 4px;
+  transition: color .15s, background .15s;
+}
+.btn-remove:hover { color: var(--accent); background: var(--accent-dim); }
+
+/* ── Buttons ──────────────────────────────────────────────── */
+.btn {
+  display      : inline-flex;
+  align-items  : center;
+  gap          : 8px;
+  padding      : 12px 26px;
+  border-radius: var(--radius-sm);
+  font-family  : var(--font);
+  font-size    : .95rem;
+  font-weight  : 700;
+  cursor       : pointer;
+  border       : none;
+  transition   : opacity .2s, transform .1s, box-shadow .2s;
+  text-decoration: none;
+}
+
+.btn:disabled {
+  opacity: .35;
+  cursor : not-allowed;
+}
+
+.btn:not(:disabled):active { transform: scale(.97); }
+
+.btn-outline {
+  background: transparent;
+  border    : 1.5px solid var(--accent);
+  color     : var(--accent);
+}
+.btn-outline:hover { background: var(--accent-dim); }
+
+.btn-primary {
+  background : var(--accent);
+  color      : #fff;
+  box-shadow : 0 0 24px rgba(233,69,96,.3);
+  align-self : flex-start;
+}
+.btn-primary:not(:disabled):hover {
+  box-shadow: 0 0 36px rgba(233,69,96,.5);
+}
+
+.btn-success {
+  background : var(--success);
+  color      : #fff;
+  box-shadow : 0 0 20px rgba(46,204,113,.25);
+}
+.btn-success:hover { box-shadow: 0 0 32px rgba(46,204,113,.45); }
+
+/* ── Progress ─────────────────────────────────────────────── */
+.progress-wrap {
+  display       : flex;
+  flex-direction: column;
+  gap           : 8px;
+}
+
+.progress-bar {
+  height       : 6px;
+  background   : var(--border);
+  border-radius: 99px;
+  overflow     : hidden;
+}
+
+.progress-fill {
+  height       : 100%;
+  width        : 0%;
+  background   : linear-gradient(90deg, var(--accent), #ff6b6b);
+  border-radius: 99px;
+  transition   : width .4s ease;
+}
+
+.progress-label {
+  font-size: .82rem;
+  color    : var(--text-dim);
+}
+
+/* ── Result ───────────────────────────────────────────────── */
+.result {
+  display    : flex;
+  align-items: center;
+  gap        : 14px;
+  background : var(--success-dim);
+  border     : 1px solid rgba(46,204,113,.3);
+  border-radius: var(--radius-sm);
+  padding    : 16px 20px;
+}
+
+.result-icon { font-size: 1.8rem; flex-shrink: 0; }
+
+.result-info { flex: 1; }
+
+.result-title {
+  font-weight: 700;
+  font-size  : .95rem;
+  color      : var(--success);
+}
+
+.result-meta {
+  font-size: .8rem;
+  color    : var(--text-dim);
+  margin-top: 2px;
+}
+
+/* ── Error ────────────────────────────────────────────────── */
+.error {
+  display    : flex;
+  align-items: flex-start;
+  gap        : 14px;
+  background : rgba(233,69,96,.1);
+  border     : 1px solid rgba(233,69,96,.3);
+  border-radius: var(--radius-sm);
+  padding    : 16px 20px;
+}
+
+.error-icon { font-size: 1.6rem; flex-shrink: 0; }
+
+.error-title {
+  font-weight: 700;
+  color      : var(--accent);
+  font-size  : .95rem;
+}
+
+.error-msg {
+  font-size  : .83rem;
+  color      : var(--text-dim);
+  margin-top : 4px;
+  white-space: pre-wrap;
+  word-break : break-word;
+}
+
+/* ── Rules footer ─────────────────────────────────────────── */
+.rules {
+  display        : flex;
+  flex-wrap      : wrap;
+  gap            : 10px;
+  justify-content: center;
+}
+
+.rule {
+  display      : flex;
+  align-items  : center;
+  gap          : 6px;
+  font-size    : .78rem;
+  color        : var(--text-dim);
+  background   : var(--bg-card);
+  border       : 1px solid var(--border);
+  border-radius: 99px;
+  padding      : 5px 14px;
+}
+
+/* ── Utility ──────────────────────────────────────────────── */
+.hidden { display: none !important; }
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 520px) {
+  .step { padding: 20px 18px; }
+  .header-text h1 { font-size: 1.35rem; }
+  .result { flex-direction: column; }
+}

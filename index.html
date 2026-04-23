@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>منظم تقارير التوصيل</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Background grid -->
+  <div class="bg-grid"></div>
+
+  <div class="wrapper">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-icon">🚚</div>
+      <div class="header-text">
+        <h1>منظم تقارير التوصيل</h1>
+        <p>رفع · معالجة · تنزيل — بدون تعديل أي بيانات</p>
+      </div>
+    </header>
+
+    <!-- Card -->
+    <main class="card" id="mainCard">
+
+      <!-- STEP 1 — Upload zone -->
+      <section class="step" id="stepUpload">
+        <div class="step-label">
+          <span class="step-num">١</span>
+          <span>رفع ملف PDF</span>
+        </div>
+
+        <div class="drop-zone" id="dropZone">
+          <div class="drop-icon">📄</div>
+          <p class="drop-title">اسحب ملف PDF هنا</p>
+          <p class="drop-sub">أو</p>
+          <label class="btn btn-outline" for="fileInput">اختر ملفاً</label>
+          <input type="file" id="fileInput" accept=".pdf,application/pdf" hidden />
+        </div>
+
+        <!-- File preview -->
+        <div class="file-preview hidden" id="filePreview">
+          <span class="file-icon">📎</span>
+          <span class="file-name" id="fileName">—</span>
+          <span class="file-size" id="fileSize">—</span>
+          <button class="btn-remove" id="btnRemove" title="إزالة الملف">✕</button>
+        </div>
+      </section>
+
+      <!-- Divider -->
+      <div class="divider"></div>
+
+      <!-- STEP 2 — Process -->
+      <section class="step" id="stepProcess">
+        <div class="step-label">
+          <span class="step-num">٢</span>
+          <span>معالجة وتنظيم</span>
+        </div>
+
+        <button class="btn btn-primary" id="btnProcess" disabled>
+          <span class="btn-icon">⚙️</span>
+          <span>معالجة التقرير</span>
+        </button>
+
+        <!-- Progress -->
+        <div class="progress-wrap hidden" id="progressWrap">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <p class="progress-label" id="progressLabel">جارٍ استخراج البيانات…</p>
+        </div>
+      </section>
+
+      <!-- Divider -->
+      <div class="divider"></div>
+
+      <!-- STEP 3 — Download -->
+      <section class="step" id="stepDownload">
+        <div class="step-label">
+          <span class="step-num">٣</span>
+          <span>تنزيل النتيجة</span>
+        </div>
+
+        <div class="result hidden" id="resultBox">
+          <div class="result-icon">✅</div>
+          <div class="result-info">
+            <p class="result-title">اكتملت المعالجة بنجاح</p>
+            <p class="result-meta" id="resultMeta">— صف</p>
+          </div>
+          <a class="btn btn-success" id="btnDownload" href="#" download>
+            <span>⬇️</span>
+            <span>تنزيل PDF المنظَّم</span>
+          </a>
+        </div>
+
+        <div class="error hidden" id="errorBox">
+          <div class="error-icon">⛔</div>
+          <div class="error-info">
+            <p class="error-title">فشلت المعالجة</p>
+            <p class="error-msg" id="errorMsg">—</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Rules footer -->
+    <footer class="rules">
+      <div class="rule"><span>🔒</span> لا يُحذف أي صف</div>
+      <div class="rule"><span>🔒</span> لا يُضاف أي صف</div>
+      <div class="rule"><span>🔒</span> لا تُعدَّل أي قيمة</div>
+      <div class="rule"><span>✅</span> إعادة ترتيب فقط</div>
+    </footer>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
